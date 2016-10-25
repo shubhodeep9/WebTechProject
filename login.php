@@ -1,4 +1,6 @@
 <?php
+if(isset($_COOKIE['user']))
+  header('Location: index.php');
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
   include 'connection.php';
   $username = $_POST['username'];

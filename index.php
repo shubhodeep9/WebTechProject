@@ -1,4 +1,6 @@
 <?php
+if(!isset($_COOKIE['user']))
+  header('Location: login.php');
 if($_SERVER['REQUEST_METHOD']==='POST'){
   include 'connection.php';
   $title = $_POST['title'];
