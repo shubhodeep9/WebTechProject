@@ -25,7 +25,22 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
       <dd><input type="submit" value="Share">
     </dl>
   </form>
-  
+  <ul class="entries">
+  <?php
+  include 'connection.php';
+  $entries = $conn->query("SELECT * FROM entries ORDER BY id DESC");
+  while($r = $entries->fetch_assoc()){
+  ?>
+    <li><h2><?php echo $r['title']." by ".$r['user']; ?></h2><?php echo nl2br($r['text']); ?></li>
+  <?php
+  }
+  if($entries->num_rows == 0){
+  ?>
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  <?php
+  }
+  ?>
+  </ul>
 </div>
 <?php
 }
